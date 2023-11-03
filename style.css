@@ -72,6 +72,11 @@ li {
     gap: 3rem;
 }
 
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width: 45rem) {
     .even-columns {
         grid-auto-flow: column;
@@ -81,9 +86,10 @@ li {
 
 /* Components */
  .btn {
-    color: inherit;
+    color: var(--clr-text);
     font-size: var(--fs-300);
-    font-weight: var(--fw-500);
+    font-weight: var(--fw-600);
+    background: var(--clr-surface);
     padding: 1em 2em;
     border: 0;
     border-radius: 100vw;
@@ -91,11 +97,16 @@ li {
     box-shadow: 0 0.25rem 0 rgb(0 0 0 / 0.08);
  }
 
+ .btn-dark {
+    background: var(--clr-text);
+    color: var(--clr-white);
+ }
+
  .btn:hover,
  .btn:focus {
-   color: var(--clr-surface);
-   background: var(--clr-text);
-   transition: all 350ms ease-in-out; 
+     color: var(--clr-surface);
+     background: var(--clr-text);
+     transition: all 350ms ease-in-out;
  }
 
 
@@ -124,6 +135,9 @@ li {
 /* Plan Styles */
 
 .plan {
+    --_shadow: var(--shadow, pink);
+    --_icon: var(--icon, red);
+    --_btn-hover: var(--btn-hover, var(--clr-text));
     position: relative;
     display: grid;
     justify-content: start;
@@ -131,11 +145,12 @@ li {
     background: var(--clr-white);
     padding: 2rem;
     border-radius: 0.75rem;
-    box-shadow: 0 0 1rem rgb(0, 0, 0 / 0.122);
+    box-shadow: 0 0 1rem rgb(0 0 0 / 0.122), -1rem -1rem 0 0 var(--_shadow);
 }
 
 .plan--icon {
     width: 2.5rem;
+    fill: var(--_icon);
 }
 
 .plan__title {
@@ -145,10 +160,46 @@ li {
 
 .plan__price {
     font-size: var(--fs-600);
-    font-weight: var(--fw-500);
+    font-weight: var(--fw-700);
 }
 
 .plan__price span {
     font-size: var(--fs-300);
     font-weight: var(--fw-500);
+}
+
+.plan > .btn:last-child {
+    margin-block-start: 2rem;
+}
+
+/*.plan::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    translate: -1.25rem -1.25rem;
+    border-radius: inherit;
+}*/
+
+.plan .btn:hover,
+.plan .btn:focus {
+    background-color: var(--_btn-hover);
+}
+
+.plan--pram {
+    --btn-hover: var(--clr-yellow-400);
+    --shadow: var(--clr-yellow-300);
+    --icon: var(--clr-yellow-400);
+}
+
+.plan--bike {
+  --shadow: var(--clr-cyan-300);
+  --icon: var(--clr-cyan-400);
+  --btn-hover: var(--clr-cyan-400);
+}
+
+.plan--rocket {
+    --shadow: var(--clr-purple-300);
+    --icon: var(--clr-purple-400);
+    --btn-hover: var(--clr-purple-400);
 }
